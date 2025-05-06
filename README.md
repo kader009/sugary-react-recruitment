@@ -1,12 +1,47 @@
-# React + Vite
+# 🚀 Project Setup and Usage Guide
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This document provides step-by-step instructions to set up and run the frontend project you have created. It also outlines the tech stack used.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📦 Tech Stack
 
-## Expanding the ESLint configuration
+- **Framework & Libraries**  
+  - React  
+  - React Router 
+  - Axios (for API requests)  
+  - React Hot Toast (for notifications)  
+  - Javascript
+- **Styling**  
+  - Tailwind CSS  
+  - Glassmorphism effect via custom and Tailwind utility classes  
+- **State & Form**  
+  - React `useState` and built-in hooks  
+- **Build & Deployment**  
+  - Vite(depending on your setup)  
+  - Netlify for hosting  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+---
+
+## 🔧 Installation
+
+1. **Clone the repository**  
+   ``` bash
+   git clone https://github.com/kader009/sugary-react-recruitment.git
+
+
+### 📦 Install Dependencies
+
+```bash
+npm install
+# or
+yarn install
+```
+### 🚀 Run the Project in Development Mode
+
+```bash
+npm run dev
+# or
+yarn dev
+
