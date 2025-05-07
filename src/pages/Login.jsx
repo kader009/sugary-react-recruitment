@@ -15,16 +15,19 @@ const LoginPage = () => {
         UserName: username,
         Password: password,
       });
+
       const { Token, RefreshToken } = res.data;
       localStorage.setItem('accessToken', Token);
       localStorage.setItem('refreshToken', RefreshToken);
       navigate('/dashboard');
       toast.success(`welcome to Dashboard`);
+
     } catch (err) {
       toast.error('Invalid credentials');
-      console.log(err);
+      console.log(err?.response?.data || err.message);
     }
   };
+
   return (
     <div>
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-600 to-indigo-700 px-4">

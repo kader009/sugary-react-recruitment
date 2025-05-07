@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import axios from './api/AxiosRequest';
+import axios from './api/AxiosRequest.js';
 
 const Dashboard = () => {
   const [materials, setMaterials] = useState([]);
@@ -9,16 +9,16 @@ const Dashboard = () => {
 
   const fetchMaterials = useCallback(async () => {
     const filter = btoa(JSON.stringify({ Skip: skip, Limit: 20, Types: [1] }));
-    setLoading(true)
+    setLoading(true);
 
     try {
-      const res = await axios.get(`/Materials/GetAll/?filter=${filter}`);
+      const res = await axios.get(`/Materials/GetAll/?filter=${filter}`, );
       setMaterials((prev) => [...prev, ...res.data.Materials]);
       console.log(res);
     } catch (err) {
-      console.error(err);
-    }finally{
-      setLoading(false)
+      console.error('api error', err);
+    } finally {
+      setLoading(false);
     }
   }, [skip]);
 
@@ -30,6 +30,7 @@ const Dashboard = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
+          console.log('Reached bottom — loading more...');
           setSkip((prev) => prev + 20);
         }
       },
@@ -63,7 +64,8 @@ const Dashboard = () => {
               Brand: {item.BrandName}
             </p>
             <p className="text-sm font-medium text-indigo-600">
-              {item.SalesPrice} BDT (${parseFloat(item.SalesPriceInUsd).toFixed(2)})
+              {item.SalesPrice} BDT ($
+              {parseFloat(item.SalesPriceInUsd).toFixed(2)})
             </p>
           </div>
         ))}
