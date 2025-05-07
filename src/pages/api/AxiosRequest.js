@@ -19,12 +19,10 @@ instance.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
     if (error.response?.status === 401 && !originalRequest._retry) {
-      
       originalRequest._retry = true;
       const refreshToken = localStorage.getItem('refreshToken');
       const accessToken = localStorage.getItem('accessToken');
       try {
-
         const { data } = await axios.post(
           'https://sugarytestapi.azurewebsites.net/Account/RefreshToken',
           {
@@ -39,8 +37,10 @@ instance.interceptors.response.use(
         return axios(originalRequest);
         
       } catch (error) {
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
         window.location.href = '/login';
-        console.log('token error', error);
+        console.log('token refresh failed', error);
       }
     }
     return Promise.reject(error);

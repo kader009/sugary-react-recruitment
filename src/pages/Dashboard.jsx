@@ -1,5 +1,5 @@
+import axios from 'axios';
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import axios from './api/AxiosRequest.js';
 
 const Dashboard = () => {
   const [materials, setMaterials] = useState([]);
@@ -12,7 +12,9 @@ const Dashboard = () => {
     setLoading(true);
 
     try {
-      const res = await axios.get(`/Materials/GetAll/?filter=${filter}`, );
+      const res = await axios.get(
+        `https://sugarytestapi.azurewebsites.net/Materials/GetAll/?filter=${filter}`
+      );
       setMaterials((prev) => [...prev, ...res.data.Materials]);
       console.log(res);
     } catch (err) {
