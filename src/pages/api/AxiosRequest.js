@@ -5,13 +5,13 @@ const instance = axios.create({
 });
 
 // Attach token to each request
-instance.interceptors.request.use((config) => {
-  const token = localStorage.getItem('accessToken');
-  if (token) {
-    config.headers['Authorization'] = `Bearer ${token}`;
-  }
-  return config;
-});
+// instance.interceptors.request.use((config) => {
+//   const token = localStorage.getItem('accessToken');
+//   if (token) {
+//     config.headers['Authorization'] = `Bearer ${token}`;
+//   }
+//   return config;
+// });
 
 // Refresh token on 401
 instance.interceptors.response.use(
