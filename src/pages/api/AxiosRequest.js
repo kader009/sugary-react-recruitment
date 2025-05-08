@@ -4,6 +4,8 @@ const instance = axios.create({
   baseURL: 'https://sugarytestapi.azurewebsites.net',
 });
 
+// accessToken is Too Long to be send causing 400 bad request
+
 // Attach token to each request
 // instance.interceptors.request.use((config) => {
 //   const token = localStorage.getItem('accessToken');
@@ -13,9 +15,9 @@ const instance = axios.create({
 //   return config;
 // });
 
-// Refresh token on 401
-instance.interceptors.response.use(
-  (response) => response,
+// Refresh token on 401 
+instance.interceptors.response.use(    
+  (response) => response, 
   async (error) => {
     const originalRequest = error.config;
     if (error.response?.status === 401 && !originalRequest._retry) {
